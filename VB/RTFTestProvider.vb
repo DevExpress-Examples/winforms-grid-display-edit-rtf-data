@@ -10,8 +10,6 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E2503
 
-
-Imports Microsoft.VisualBasic
 Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
@@ -22,19 +20,20 @@ Imports System.Windows.Forms
 Imports System.IO
 
 Namespace WindowsApplication1
-	Public NotInheritable Class RTFTextProvider
-		Private Shared _TestText As String
+    Public NotInheritable Class RTFTextProvider
 
-		Private Sub New()
-		End Sub
-		Shared Sub New()
-			Dim tr As New StreamReader("..\..\RTFText.rtf")
-			_TestText = tr.ReadToEnd()
-		End Sub
+        Private Sub New()
+        End Sub
+        Private Shared _TestText As String
+
+        Shared Sub New()
+            Dim tr As New StreamReader("..\..\RTFText.rtf")
+            _TestText = tr.ReadToEnd()
+        End Sub
 
 
-		Public Shared Function GetRichText(ByVal obj As Object) As Object
-			Return _TestText.Replace("TextToReplace", obj.ToString())
-		End Function
-	End Class
+        Public Shared Function GetRichText(ByVal obj As Object) As Object
+            Return _TestText.Replace("TextToReplace", obj.ToString())
+        End Function
+    End Class
 End Namespace
