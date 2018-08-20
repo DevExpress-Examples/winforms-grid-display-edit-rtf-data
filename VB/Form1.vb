@@ -56,7 +56,8 @@ Namespace WindowsApplication1
 
 
         Private Sub riPopup_QueryPopUp(ByVal sender As Object, ByVal e As CancelEventArgs) Handles riPopup.QueryPopUp
-            richEditControl.Document.RtfText = (TryCast(sender, BaseEdit)).EditValue.ToString()
+            Dim editor As BaseEdit = DirectCast(sender, BaseEdit)
+            richEditControl.Document.RtfText = editor.EditValue.ToString()
         End Sub
 
         Private Sub riPopup_QueryDisplayText(ByVal sender As Object, ByVal e As QueryDisplayTextEventArgs) Handles riPopup.QueryDisplayText
@@ -69,8 +70,8 @@ Namespace WindowsApplication1
 
         Private Sub riPopup_CloseUp(ByVal sender As Object, ByVal e As CloseUpEventArgs) Handles riPopup.CloseUp
             If Not e.AcceptValue Then
-                Dim pSender As PopupContainerEdit = TryCast(sender, PopupContainerEdit)
-                Dim rEdit As RichEditControl = TryCast(pSender.Properties.PopupControl.Controls(0), RichEditControl)
+                Dim pSender As PopupContainerEdit = DirectCast(sender, PopupContainerEdit)
+                Dim rEdit As RichEditControl = CType(pSender.Properties.PopupControl.Controls(0), RichEditControl)
                 rEdit.Document.RtfText = e.Value.ToString()
             End If
         End Sub
