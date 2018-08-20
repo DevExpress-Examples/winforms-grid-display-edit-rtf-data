@@ -59,7 +59,8 @@ namespace WindowsApplication1
 
         void riPopup_QueryPopUp(object sender, CancelEventArgs e)
         {
-            richEditControl.Document.RtfText = (sender as BaseEdit).EditValue.ToString();
+            BaseEdit editor = (BaseEdit)sender;
+            richEditControl.Document.RtfText = editor.EditValue.ToString();
         }
 
         void riPopup_QueryDisplayText(object sender, QueryDisplayTextEventArgs e)
@@ -74,8 +75,8 @@ namespace WindowsApplication1
 
         private void riPopup_CloseUp(object sender, CloseUpEventArgs e) {
             if(!e.AcceptValue) {
-                PopupContainerEdit pSender = sender as PopupContainerEdit;
-                RichEditControl rEdit = pSender.Properties.PopupControl.Controls[0] as RichEditControl;
+                PopupContainerEdit pSender = (PopupContainerEdit)sender;
+                RichEditControl rEdit = (RichEditControl)pSender.Properties.PopupControl.Controls[0];
                 rEdit.Document.RtfText = e.Value.ToString();
             }
         }
