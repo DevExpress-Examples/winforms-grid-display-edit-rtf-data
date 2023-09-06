@@ -44,7 +44,7 @@ namespace WindowsApplication1
         {
             InitializeComponent();
             gridControl1.DataSource = CreateTable(20);
-            gridView1.OptionsView.RowAutoHeight = false;
+            gridView1.OptionsView.RowAutoHeight = true;
             gridView1.RowHeight = 30;
             gridColumn1.Width = 20;
             riPopup.PopupFormMinSize = new Size(400, 400);
