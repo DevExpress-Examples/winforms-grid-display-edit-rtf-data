@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' How to display rich text in GridView's cells, but edit their content in a popup window
 ' 
 ' This example demonstrates how to provide different editors for displaying and
@@ -9,9 +9,10 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E2503
-
 Namespace WindowsApplication1
-    Partial Public Class Form1
+
+    Partial Class Form1
+
         ''' <summary>
         ''' Required designer variable.
         ''' </summary>
@@ -22,14 +23,14 @@ Namespace WindowsApplication1
         ''' </summary>
         ''' <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (components IsNot Nothing) Then
-                components.Dispose()
+            If disposing AndAlso (Me.components IsNot Nothing) Then
+                Me.components.Dispose()
             End If
+
             MyBase.Dispose(disposing)
         End Sub
 
-        #Region "Windows Form Designer generated code"
-
+'#Region "Windows Form Designer generated code"
         ''' <summary>
         ''' Required method for Designer support - do not modify
         ''' the contents of this method with the code editor.
@@ -44,13 +45,13 @@ Namespace WindowsApplication1
             Me.popupContainerControl = New DevExpress.XtraEditors.PopupContainerControl()
             Me.richEditControl = New DevExpress.XtraRichEdit.RichEditControl()
             Me.gridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-            CType(Me.gridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.gridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.repositoryItemRichTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.riPopup, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.popupContainerControl, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.gridControl1), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.gridView1), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.repositoryItemRichTextEdit1), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.riPopup), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.popupContainerControl), System.ComponentModel.ISupportInitialize).BeginInit()
             Me.popupContainerControl.SuspendLayout()
-            CType(Me.gridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.gridView2), System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             ' 
             ' gridControl1
@@ -59,17 +60,18 @@ Namespace WindowsApplication1
             Me.gridControl1.Location = New System.Drawing.Point(0, 0)
             Me.gridControl1.MainView = Me.gridView1
             Me.gridControl1.Name = "gridControl1"
-            Me.gridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() { Me.riPopup, Me.repositoryItemRichTextEdit1})
+            Me.gridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riPopup, Me.repositoryItemRichTextEdit1})
             Me.gridControl1.Size = New System.Drawing.Size(548, 454)
             Me.gridControl1.TabIndex = 0
-            Me.gridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() { Me.gridView1, Me.gridView2})
+            Me.gridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridView1, Me.gridView2})
             ' 
             ' gridView1
             ' 
-            Me.gridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() { Me.gridColumn1, Me.gridColumn2})
+            Me.gridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.gridColumn1, Me.gridColumn2})
             Me.gridView1.GridControl = Me.gridControl1
             Me.gridView1.Name = "gridView1"
             Me.gridView1.OptionsView.RowAutoHeight = True
+            AddHandler Me.gridView1.CustomRowCellEditForEditing, New DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(AddressOf Me.gridView1_CustomRowCellEditForEditing)
             ' 
             ' gridColumn1
             ' 
@@ -97,9 +99,13 @@ Namespace WindowsApplication1
             ' riPopup
             ' 
             Me.riPopup.AutoHeight = False
-            Me.riPopup.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() { New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.riPopup.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
             Me.riPopup.Name = "riPopup"
             Me.riPopup.PopupControl = Me.popupContainerControl
+            AddHandler Me.riPopup.QueryResultValue, New DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(AddressOf Me.riPopup_QueryResultValue)
+            AddHandler Me.riPopup.QueryDisplayText, New DevExpress.XtraEditors.Controls.QueryDisplayTextEventHandler(AddressOf Me.riPopup_QueryDisplayText)
+            AddHandler Me.riPopup.QueryPopUp, New System.ComponentModel.CancelEventHandler(AddressOf Me.riPopup_QueryPopUp)
+            AddHandler Me.riPopup.CloseUp, New DevExpress.XtraEditors.Controls.CloseUpEventHandler(AddressOf Me.riPopup_CloseUp)
             ' 
             ' popupContainerControl
             ' 
@@ -133,28 +139,33 @@ Namespace WindowsApplication1
             Me.Controls.Add(Me.gridControl1)
             Me.Name = "Form1"
             Me.Text = "Form1"
-            CType(Me.gridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.gridView1, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.repositoryItemRichTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.riPopup, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.popupContainerControl, System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.gridControl1), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.gridView1), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.repositoryItemRichTextEdit1), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.riPopup), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.popupContainerControl), System.ComponentModel.ISupportInitialize).EndInit()
             Me.popupContainerControl.ResumeLayout(False)
-            CType(Me.gridView2, System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.gridView2), System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
-
         End Sub
 
-        #End Region
-
+'#End Region
         Private gridControl1 As DevExpress.XtraGrid.GridControl
-        Private WithEvents gridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+
+        Private gridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+
         Private gridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-        Private WithEvents riPopup As DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit
+
+        Private riPopup As DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit
+
         Private popupContainerControl As DevExpress.XtraEditors.PopupContainerControl
+
         Private richEditControl As DevExpress.XtraRichEdit.RichEditControl
+
         Private gridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+
         Private gridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+
         Private repositoryItemRichTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit
     End Class
 End Namespace
-

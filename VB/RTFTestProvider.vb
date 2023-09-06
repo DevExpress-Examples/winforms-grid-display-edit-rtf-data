@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' How to display rich text in GridView's cells, but edit their content in a popup window
 ' 
 ' This example demonstrates how to provide different editors for displaying and
@@ -9,31 +9,23 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E2503
-
-Imports System
-Imports System.Collections.Generic
 Imports System.ComponentModel
-Imports System.Data
 Imports System.Drawing
-Imports System.Text
-Imports System.Windows.Forms
 Imports System.IO
 
 Namespace WindowsApplication1
-    Public NotInheritable Class RTFTextProvider
 
-        Private Sub New()
-        End Sub
-        Private Shared _TestText As String
+    Public Module RTFTextProvider
 
-        Shared Sub New()
-            Dim tr As New StreamReader("..\..\RTFText.rtf")
+        Private _TestText As String
+
+        Sub New()
+            Dim tr As StreamReader = New StreamReader("..\..\RTFText.rtf")
             _TestText = tr.ReadToEnd()
         End Sub
 
-
-        Public Shared Function GetRichText(ByVal obj As Object) As Object
+        Public Function GetRichText(ByVal obj As Object) As Object
             Return _TestText.Replace("TextToReplace", obj.ToString())
         End Function
-    End Class
+    End Module
 End Namespace
